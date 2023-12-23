@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,8 +16,9 @@ namespace Game_01
             this.x = x;
             this.y = -40;
             item = Properties.Resources.Ball;
-            width = 40;
-            height = 50;
+            item = Properties.Resources.Ball_2;
+            width = 100;
+            height = 100;
             wasOut = false;
         }
 

@@ -16,7 +16,7 @@ namespace Game_01
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Game1());
+            Application.Run(new Start());
         }
     }
 }

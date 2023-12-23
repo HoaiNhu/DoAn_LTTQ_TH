@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,9 +14,9 @@ namespace Game_01
         {
             item = Properties.Resources.Basket;
             width = 160;
-            height = 40;
-            x = (clientWidth - width) / 2;
-            y = (clientHeight - height) / 2;
+            height = 100;
+            x = (clientWidth - width);
+            y = (clientHeight - height); // định vị trí chiều cao của basket
         }
 
         public void move(bool IsLeft, int maxwidth, double speed)

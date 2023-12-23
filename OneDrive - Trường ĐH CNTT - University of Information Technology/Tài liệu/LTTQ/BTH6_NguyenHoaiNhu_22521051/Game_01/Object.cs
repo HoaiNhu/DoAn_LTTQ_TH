@@ -30,14 +30,14 @@ namespace Game_01
 
         public void DrawObject(Graphics e)
         {
-            e.DrawImage(item, (float)x, (float)y, width, height);
+            e.DrawImage(item, (float)x, (float)y, width, height);           
         }
 
         public bool IntersertCheck(Object other)
         {
-            bool isTouchingTop = y + height >= other.y;
+            bool isTouchingTop =( y + height / 2)>= other.y; // điểm chạm của Ball và Basket
 
-            bool isIntersertingX = (x + width / 2) <= (other.x + other.width) && (x + width / 2) >= other.x;
+            bool isIntersertingX = (x + width / 2) <= (other.x + other.width) && (x +  width / 2) >= other.x;
 
             return isTouchingTop && isIntersertingX;
         }

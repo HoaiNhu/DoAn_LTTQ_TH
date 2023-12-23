@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
-using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Random;
 
 namespace Game_01
 {
@@ -21,8 +22,9 @@ namespace Game_01
         double moveSpeed;
         int score;
         int chance;
-        //System.Media.SoundPlayer success = new System.Media.SoundPlayer(Properties.Resources.success);
-        //System.Media.SoundPlayer missed = new System.Media.SoundPlayer(Properties.Resources.missed);
+        System.Media.SoundPlayer success = new System.Media.SoundPlayer(Properties.Resources.success);
+        System.Media.SoundPlayer missed = new System.Media.SoundPlayer(Properties.Resources.missed);
+
 
         Random random = new Random();
         public Game1()
@@ -37,8 +39,8 @@ namespace Game_01
         {
             listBall = new List<Ball>();
             basket = new Basket(ClientSize.Width, ClientSize.Height);
-            dropSpeed = 2.9;
-            moveSpeed = 4.75;
+            dropSpeed = 4;
+            moveSpeed = 5; //tốc độ di chuyển của Basket
             score = 0;
             chance = 2;
             timeradd.Interval = 3000;
@@ -66,10 +68,10 @@ namespace Game_01
 
             basket.DrawObject(g);
 
-            Font drawFont = new Font("Arial", 16);
-            SolidBrush drawBrush = new SolidBrush(Color.GreenYellow);
+            Font drawFont = new Font("Arial", 16); //Đổi kiểu chữ và font 
+            SolidBrush drawBrush = new SolidBrush(Color.BlueViolet); //Chỉnh màu chữ
 
-            e.Graphics.DrawString("Score: " + score.ToString() + "\nChance left: " + chance.ToString(), drawFont, drawBrush, 10, 10);
+            e.Graphics.DrawString("Score: " + score.ToString() + "\nChance left: " + chance.ToString(), drawFont, drawBrush, 10, 10); 
 
         }
 
@@ -93,14 +95,14 @@ namespace Game_01
                 {
                     ballsToRemove.Add(item);
                     score++;
-                    //success.Play();
+                    success.Play();
                 }
                 else if (item.IsOut(ClientSize.Height) && !item.checkWasOut())
                 {
                     item.setWasOut();
                     ballsToRemove.Add(item);
                     chance--;
-                    //missed.Play();
+                    missed.Play();
                     if (chance < 0)
                     {
                         timergame.Stop();
@@ -113,7 +115,10 @@ namespace Game_01
                         }
                         if (result == DialogResult.No)
                         {
-                            Application.Exit();
+                            this.Hide();
+                            Start start = new Start();
+                            start.ShowDialog();
+                            this.Close();
                         }
                     }
                 }
@@ -155,7 +160,7 @@ namespace Game_01
 
         }
 
-        private void timeradd_Tick(object sender, KeyEventArgs e)
+        private void timeradd_Tick(object sender, EventArgs e)
         {
             int x = random.Next(0, ClientSize.Width - 39);
             listBall.Add(new Ball(x));
