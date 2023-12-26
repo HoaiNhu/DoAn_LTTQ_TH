@@ -39,7 +39,7 @@ namespace Game_01
         {
             listBall = new List<Ball>();
             basket = new Basket(ClientSize.Width, ClientSize.Height);
-            dropSpeed = 4;
+            dropSpeed = 4; //tốc độ rơi
             moveSpeed = 5; //tốc độ di chuyển của Basket
             score = 0;
             chance = 2;
@@ -51,10 +51,15 @@ namespace Game_01
             timeradd.Start();
             timergame.Start();
 
-            Random random = new Random();
-            int x = random.Next(0, ClientSize.Width - 39);
+            //Random random = new Random();
 
-            listBall.Add(new Ball(x));
+            int x = random.Next(1, ClientSize.Width - 39);
+
+            int y = random.Next(0,3);
+
+
+            listBall.Add( new Ball(x,y));
+
         }
 
         private void Game1_Paint(object sender, PaintEventArgs e)
@@ -68,8 +73,8 @@ namespace Game_01
 
             basket.DrawObject(g);
 
-            Font drawFont = new Font("Arial", 16); //Đổi kiểu chữ và font 
-            SolidBrush drawBrush = new SolidBrush(Color.BlueViolet); //Chỉnh màu chữ
+            Font drawFont = new Font("SVN-Cookies", 16); //Đổi kiểu chữ và font 
+            SolidBrush drawBrush = new SolidBrush(Color.DarkBlue); //Chỉnh màu chữ
 
             e.Graphics.DrawString("Score: " + score.ToString() + "\nChance left: " + chance.ToString(), drawFont, drawBrush, 10, 10); 
 
@@ -108,7 +113,7 @@ namespace Game_01
                         timergame.Stop();
                         timeradd.Stop();
 
-                        DialogResult result = MessageBox.Show($"Your score:  {score}.Play again?", "Game over!", MessageBoxButtons.YesNo);
+                        DialogResult result = MessageBox.Show($"Your score:  {score}. Play again?", "Game over!", MessageBoxButtons.YesNo);
                         if (result == DialogResult.Yes)
                         {
                             start();
@@ -135,11 +140,11 @@ namespace Game_01
         //Ham dieu khien basket
         private void Game1_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.A)
+            if (e.KeyCode == Keys.A || e.KeyCode == Keys.Left)
             {
                 isMovingLeft = true;
             }
-            else if (e.KeyCode == Keys.D)
+            else if (e.KeyCode == Keys.D || e.KeyCode == Keys.Right)
             {
                 isMovingRight = true;
             }
@@ -148,11 +153,11 @@ namespace Game_01
 
         private void Game1_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.A)
+            if (e.KeyCode == Keys.A || e.KeyCode == Keys.Left)
             {
                 isMovingLeft = false;
             }
-            else if (e.KeyCode == Keys.D)
+            else if (e.KeyCode == Keys.D || e.KeyCode == Keys.Right)
             {
                 isMovingRight = false;
             }
@@ -162,15 +167,23 @@ namespace Game_01
 
         private void timeradd_Tick(object sender, EventArgs e)
         {
-            int x = random.Next(0, ClientSize.Width - 39);
-            listBall.Add(new Ball(x));
 
+            int x = random.Next(1, ClientSize.Width - 39);
+
+            int y = random.Next(0,3);
+
+
+            listBall.Add(new Ball(x, y));
+
+            //chỉnh tốc độ rơi
             if (dropSpeed < 10)
                 dropSpeed += 0.1;
 
+            //chỉnh tốc độ tạo ball
             if (timeradd.Interval > 500)
                 timeradd.Interval -= 25;
 
+            //chỉnh tốc độ di chuyển của basket
             if (moveSpeed < 30)
                 moveSpeed += 0.25;
         }

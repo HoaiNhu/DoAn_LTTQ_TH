@@ -117,11 +117,21 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="textBox_Intro.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="textBox_Intro.Text" xml:space="preserve">
-    <value>Cách chơi:
-1. Bạn điều khiển Basket bằng cách nhấn phím A để sang TRÁI, phím D để sang PHẢI
+    <value>CÁCH CHƠI 
+1. Bạn điều khiển Basket bằng cách nhấn phím A hoăc &lt;- để sang TRÁI, phím D hoặc -&gt; để sang PHẢI
 2. Bạn sẽ hứng những BALL từ trên trời rơi xuống, hứng càng nhiều càng tốt, mỗi khi hứng được 1 BALL bạn sẽ được 1 điểm
 3. Nếu bạn để rơi mất qua 2 lần bạn sẽ thua cuộc
-CHÚC BẠN CHƠI GAME VUI VẺ :3</value>
+CHÚC BẠN CHƠI GAME VUI VẺ :3
+</value>
   </data>
+  <metadata name="button_Back.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
 </root>

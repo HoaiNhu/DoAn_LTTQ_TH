@@ -113,6 +113,16 @@ namespace Game_01.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Ball_3 {
+            get {
+                object obj = ResourceManager.GetObject("Ball_3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Basket {
             get {
                 object obj = ResourceManager.GetObject("Basket", resourceCulture);

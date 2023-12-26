@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
 namespace Game_01
 {
@@ -11,12 +13,24 @@ namespace Game_01
     {
         bool wasOut;
 
-        public Ball(int x)
+        public Ball(int x, int ran)
         {
             this.x = x;
             this.y = -40;
-            item = Properties.Resources.Ball;
-            item = Properties.Resources.Ball_2;
+            
+            if(ran == 0)
+            {
+                item = Properties.Resources.Ball_2;
+            }    
+            else   if(ran == 1)          
+            {
+                item = Properties.Resources.Ball;
+            }    
+            else if(ran == 2)
+            {
+                item = Properties.Resources.Ball_3;
+            }    
+
             width = 100;
             height = 100;
             wasOut = false;
@@ -27,6 +41,8 @@ namespace Game_01
             y += speed;
         }
 
+        
+        //Kiểm tra đã ra khỏi screen chưa
         public bool IsOut(int maxheight)
         {
             if (y + height > maxheight)

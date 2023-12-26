@@ -30,19 +30,41 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Intro));
             this.textBox_Intro = new System.Windows.Forms.TextBox();
+            this.button_Back = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBox_Intro
             // 
+            this.textBox_Intro.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox_Intro.BackColor = System.Drawing.Color.SaddleBrown;
+            this.textBox_Intro.Cursor = System.Windows.Forms.Cursors.WaitCursor;
             this.textBox_Intro.Font = new System.Drawing.Font("UTM Alberta Heavy", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_Intro.ForeColor = System.Drawing.Color.Bisque;
-            this.textBox_Intro.Location = new System.Drawing.Point(172, 104);
+            this.textBox_Intro.Location = new System.Drawing.Point(90, 59);
             this.textBox_Intro.Multiline = true;
             this.textBox_Intro.Name = "textBox_Intro";
-            this.textBox_Intro.Size = new System.Drawing.Size(511, 213);
+            this.textBox_Intro.ReadOnly = true;
+            this.textBox_Intro.Size = new System.Drawing.Size(460, 217);
             this.textBox_Intro.TabIndex = 0;
+            this.textBox_Intro.TabStop = false;
             this.textBox_Intro.Text = resources.GetString("textBox_Intro.Text");
+            this.textBox_Intro.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_Intro.UseWaitCursor = true;
+            // 
+            // button_Back
+            // 
+            this.button_Back.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.button_Back.BackgroundImage = global::Game_01.Properties.Resources.Background;
+            this.button_Back.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button_Back.Location = new System.Drawing.Point(12, 331);
+            this.button_Back.Name = "button_Back";
+            this.button_Back.Size = new System.Drawing.Size(75, 23);
+            this.button_Back.TabIndex = 1;
+            this.button_Back.Text = "Back";
+            this.button_Back.UseVisualStyleBackColor = false;
+            this.button_Back.Click += new System.EventHandler(this.button_Back_Click);
             // 
             // Intro
             // 
@@ -50,7 +72,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Game_01.Properties.Resources.Background_Intro;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(609, 366);
+            this.Controls.Add(this.button_Back);
             this.Controls.Add(this.textBox_Intro);
             this.MaximizeBox = false;
             this.Name = "Intro";
@@ -65,5 +88,6 @@
         #endregion
 
         private System.Windows.Forms.TextBox textBox_Intro;
+        private System.Windows.Forms.Button button_Back;
     }
 }

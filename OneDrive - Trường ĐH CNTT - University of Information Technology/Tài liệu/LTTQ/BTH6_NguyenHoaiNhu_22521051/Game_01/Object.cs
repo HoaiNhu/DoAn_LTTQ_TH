@@ -33,11 +33,12 @@ namespace Game_01
             e.DrawImage(item, (float)x, (float)y, width, height);           
         }
 
+        //Kiểm tra Ball có chạm vào Basket hay không
         public bool IntersertCheck(Object other)
         {
-            bool isTouchingTop =( y + height / 2)>= other.y; // điểm chạm của Ball và Basket
+            bool isTouchingTop =( y + height / 2) >= other.y; // điểm chạm của Ball và Basket ở trên, nếu ball trùng vs y của basket thì 2 vật chạm nhau
 
-            bool isIntersertingX = (x + width / 2) <= (other.x + other.width) && (x +  width / 2) >= other.x;
+            bool isIntersertingX = (x + width / 2) <= (other.x + other.width) && (x +  width / 2) >= other.x; //chạm ở x  
 
             return isTouchingTop && isIntersertingX;
         }

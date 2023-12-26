@@ -19,8 +19,10 @@ namespace Game_01
 
         private void button_HuongDan_Click(object sender, EventArgs e)
         {
+            this.Hide();
             Intro intro = new Intro();
             intro.ShowDialog();
+            this.Close();
         }
 
         private void button_Start_Click(object sender, EventArgs e)

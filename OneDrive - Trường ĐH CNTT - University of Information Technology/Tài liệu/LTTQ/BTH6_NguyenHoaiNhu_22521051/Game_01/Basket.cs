@@ -15,7 +15,7 @@ namespace Game_01
             item = Properties.Resources.Basket;
             width = 160;
             height = 100;
-            x = (clientWidth - width);
+            x = (clientWidth - width)/2;
             y = (clientHeight - height); // định vị trí chiều cao của basket
         }
 
