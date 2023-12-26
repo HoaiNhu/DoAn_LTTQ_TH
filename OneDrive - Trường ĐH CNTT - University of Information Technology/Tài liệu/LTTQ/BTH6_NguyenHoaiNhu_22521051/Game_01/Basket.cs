@@ -19,6 +19,7 @@ namespace Game_01
             y = (clientHeight - height); // định vị trí chiều cao của basket
         }
 
+        //xử ký di chuyển của basket
         public void move(bool IsLeft, int maxwidth, double speed)
         {
             if (IsLeft)

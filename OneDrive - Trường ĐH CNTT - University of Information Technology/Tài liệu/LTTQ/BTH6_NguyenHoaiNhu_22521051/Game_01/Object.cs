@@ -36,9 +36,9 @@ namespace Game_01
         //Kiểm tra Ball có chạm vào Basket hay không
         public bool IntersertCheck(Object other)
         {
-            bool isTouchingTop =( y + height / 2) >= other.y; // điểm chạm của Ball và Basket ở trên, nếu ball trùng vs y của basket thì 2 vật chạm nhau
+            bool isTouchingTop =( y + height / 2) >= other.y; // điểm chạm của Ball và Basket ở trên, nếu ball trùng vs y của basket thì 2 vật chạm nhau 
 
-            bool isIntersertingX = (x + width / 2) <= (other.x + other.width) && (x +  width / 2) >= other.x; //chạm ở x  
+            bool isIntersertingX = (x + width / 2) <= (other.x + other.width) && (x +  width / 2) >= other.x; //chạm ở x /trong vùng giao thoa của hai đối tượng
 
             return isTouchingTop && isIntersertingX;
         }

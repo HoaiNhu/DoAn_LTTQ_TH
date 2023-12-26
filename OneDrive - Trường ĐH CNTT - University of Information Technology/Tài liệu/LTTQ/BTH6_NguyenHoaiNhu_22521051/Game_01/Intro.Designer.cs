@@ -75,6 +75,7 @@
             this.ClientSize = new System.Drawing.Size(609, 366);
             this.Controls.Add(this.button_Back);
             this.Controls.Add(this.textBox_Intro);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Intro";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

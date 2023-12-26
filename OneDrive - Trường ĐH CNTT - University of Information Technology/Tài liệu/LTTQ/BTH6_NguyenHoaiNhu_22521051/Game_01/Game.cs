@@ -15,7 +15,7 @@ namespace Game_01
     public partial class Game1 : Form
     {
         Basket basket;
-        List<Ball> listBall;
+        List<Ball> listBall; 
         private bool isMovingLeft;
         private bool isMovingRight;
         double dropSpeed;
@@ -31,19 +31,19 @@ namespace Game_01
 
         {
             InitializeComponent();
-            this.DoubleBuffered = true;
+            this.DoubleBuffered = true; //tạo bản sao đệm của game -> giảm số lần update screen -> cải thiện hiệu suất đồ họa
             start();
         }
 
         void start()
         {
-            listBall = new List<Ball>();
-            basket = new Basket(ClientSize.Width, ClientSize.Height);
+            listBall = new List<Ball>(); //danh sách lưu trữ ball
+            basket = new Basket(ClientSize.Width, ClientSize.Height); //tạo basket với khu vực chỉ định
             dropSpeed = 4; //tốc độ rơi
             moveSpeed = 5; //tốc độ di chuyển của Basket
             score = 0;
             chance = 2;
-            timeradd.Interval = 3000;
+            timeradd.Interval = 3000; //time thêm bóng mới
 
             isMovingLeft = false;
             isMovingRight = false;
@@ -51,13 +51,13 @@ namespace Game_01
             timeradd.Start();
             timergame.Start();
 
-            //Random random = new Random();
+            //random bóng từ resources vs tọa độ ngẫu nhiên
 
             int x = random.Next(1, ClientSize.Width - 39);
 
             int y = random.Next(0,3);
 
-
+            //thêm bóng mới vào list
             listBall.Add( new Ball(x,y));
 
         }
@@ -80,6 +80,7 @@ namespace Game_01
 
         }
 
+        //xử lí khi chơi
         private void timergame_Tick(object sender, EventArgs e)
         {
             if (isMovingLeft)
@@ -92,27 +93,32 @@ namespace Game_01
                 basket.move(false, ClientSize.Width, moveSpeed);
             }
 
-            List<Ball> ballsToRemove = new List<Ball>();
-            foreach (Ball item in listBall)
+            List<Ball> ballsToRemove = new List<Ball>(); 
+
+            foreach (Ball item in listBall) 
             {
                 item.Drop(dropSpeed);
-                if (item.IntersertCheck(basket))
+                if (item.IntersertCheck(basket)) //nếu ball chạm basket
                 {
                     ballsToRemove.Add(item);
                     score++;
                     success.Play();
                 }
-                else if (item.IsOut(ClientSize.Height) && !item.checkWasOut())
+                else if (item.IsOut(ClientSize.Height) && !item.checkWasOut()) //nếu rơi khỏi screen
                 {
-                    item.setWasOut();
+                    item.setWasOut(); //đánh dấu đã rơi
                     ballsToRemove.Add(item);
                     chance--;
                     missed.Play();
+
+                    //nếu rơi quá 2 lần
                     if (chance < 0)
                     {
+                        //dừng game
                         timergame.Stop();
                         timeradd.Stop();
 
+                        //xuất thông báo
                         DialogResult result = MessageBox.Show($"Your score:  {score}. Play again?", "Game over!", MessageBoxButtons.YesNo);
                         if (result == DialogResult.Yes)
                         {
@@ -129,6 +135,7 @@ namespace Game_01
                 }
             }
 
+            //xóa ball tạo, tạo cửa sổ mới
             foreach (Ball ball in ballsToRemove)
             {
                 listBall.Remove(ball);
@@ -165,13 +172,14 @@ namespace Game_01
 
         }
 
+        //thêm bóng mới trong khoảng thời gian đều đặn
         private void timeradd_Tick(object sender, EventArgs e)
         {
-
+            //điểm rơi ngẫu nhiên
             int x = random.Next(1, ClientSize.Width - 39);
 
+            //random hình trong resources
             int y = random.Next(0,3);
-
 
             listBall.Add(new Ball(x, y));
 
@@ -179,11 +187,11 @@ namespace Game_01
             if (dropSpeed < 10)
                 dropSpeed += 0.1;
 
-            //chỉnh tốc độ tạo ball
+            //chỉnh tốc độ tạo ball, tạo bóng nhanh hơn nếu khoảng thời gian giữa 2 lần tạo bóng > 500
             if (timeradd.Interval > 500)
                 timeradd.Interval -= 25;
 
-            //chỉnh tốc độ di chuyển của basket
+            //chỉnh tốc độ di chuyển 
             if (moveSpeed < 30)
                 moveSpeed += 0.25;
         }
